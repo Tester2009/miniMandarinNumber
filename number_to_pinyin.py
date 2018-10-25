@@ -1,20 +1,19 @@
 # coding=utf-8 # add this to solve unicode issue
+# written by @Tester2009
+# October 26, 2018
 # show error name and file, and line where it go wrong: https://stackoverflow.com/a/1278740
 # solve issue unicode which is > " SyntaxError: Non-ASCII character '\xc3' in file number_to_pinyin.py on line 40, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details " by using this solution: https://stackoverflow.com/a/26899264
 # split integer or string into array: https://stackoverflow.com/a/1906723
-
+# source for spelling: https://blogs.transparent.com/chinese/chinese-numbers-1-100/
 import sys, os
-# written by @Tester2009
-# October 26, 2018
 
 def main():
     number_to_pinyin()
 
 def number_to_pinyin():
-    # print("hello")
     # check length of input
     try:
-        REQUEST_INPUT = int(input('Input your number: '))
+        REQUEST_INPUT = int(abs(input('Input your number: '))) # abs is to get absolute value of number. will convert negative number (if exist) to positive: https://www.codevscolor.com/count-number-digits-number-python/
         # print(REQUEST_INPUT)
         # check for length of input
         CHANGE_INT_TO_STR_RQ_INPUT = str(REQUEST_INPUT)
@@ -22,6 +21,7 @@ def number_to_pinyin():
         if LENGTH_OF_INPUT==1:
             # basically from 0 to 9
             print('0 - 9')
+            print(REQUEST_INPUT)
             print( pinyin_first(REQUEST_INPUT) )
         if LENGTH_OF_INPUT==2:
             # basically from 10 to 99
@@ -36,6 +36,11 @@ def number_to_pinyin():
         if LENGTH_OF_INPUT==3:
             # basically from 100 to 999
             print('100 to 999')
+            # hundred_number(REQUEST_INPUT)
+            SPLICE_INTEGER_ = list(str(REQUEST_INPUT))
+            # if int(SPLICE_INTEGER_[1])==0:
+            print( pinyin_first(SPLICE_INTEGER_[0]) )
+            print(SPLICE_INTEGER_[0])
     except Exception as e_message:
         GET_ERROR_INFO = throwError('errName')
         # print(GET_ERROR_INFO)
@@ -43,6 +48,10 @@ def number_to_pinyin():
             print("Please input integer only! 1")
         if GET_ERROR_INFO=="NameError":
             print("Please input integer only! 2")
+
+def hundred_number(VAL):
+    CHG_VAL_INT_ = int(VAL)
+    print(CHG_VAL_INT_)
 
 
 def ten_number(VAL):
