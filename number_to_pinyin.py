@@ -22,14 +22,18 @@ def number_to_pinyin():
         if LENGTH_OF_INPUT==1:
             # basically from 0 to 9
             print('0 - 9')
-            pinyin_first(REQUEST_INPUT)
+            print( pinyin_first(REQUEST_INPUT) )
         if LENGTH_OF_INPUT==2:
             # basically from 10 to 99
             # but each 10 number have their own
             print('10 - 99')
             # have to check first integer and 2nd integer
             SPLICE_INTEGER_ = list(str(REQUEST_INPUT))
-            print( ten_number(SPLICE_INTEGER_[0]) )
+            if int(SPLICE_INTEGER_[1])==0:
+                # if the 2nd integer is zero, don't need to add "Líng".
+                print( ten_number(SPLICE_INTEGER_[0]) )
+            else:
+                print( ten_number(SPLICE_INTEGER_[0]) + " " + pinyin_first(SPLICE_INTEGER_[1]) )
             # print(SPLICE_INTEGER_[0])
             # print(SPLICE_INTEGER_[1])
             # for i in range(0, len(SPLICE_INTEGER_)):
@@ -47,6 +51,7 @@ def number_to_pinyin():
         if GET_ERROR_INFO=="NameError":
             print("Please input integer only! 2")
 
+
 def ten_number(VAL):
     CHG_VAL_INT_ = int(VAL)
     # print(CHG_VAL_INT_)
@@ -56,25 +61,27 @@ def ten_number(VAL):
     return RTN_VAL_TEN_NMBR
 
 def pinyin_first(VAL):
-    if VAL==0:
-        print("Líng")
-    if VAL==1:
+    CHG_VAL_INT_ = int(VAL)
+    if CHG_VAL_INT_==0:
+        # print("Líng")
+        return "Líng"
+    if CHG_VAL_INT_==1:
         return "Yī"
-    if VAL==2:
+    if CHG_VAL_INT_==2:
         return "Èr"
-    if VAL==3:
+    if CHG_VAL_INT_==3:
         return "Sān"
-    if VAL==4:
+    if CHG_VAL_INT_==4:
         return "Sì"
-    if VAL==5:
+    if CHG_VAL_INT_==5:
         return "Wǔ"
-    if VAL==6:
+    if CHG_VAL_INT_==6:
         return "Liù"
-    if VAL==7:
+    if CHG_VAL_INT_==7:
         return "Qī"
-    if VAL==8:
+    if CHG_VAL_INT_==8:
         return "Bā"
-    if VAL==9:
+    if CHG_VAL_INT_==9:
         return "Jiǔ"
 
 def throwError(TYPE_OF_ERROR_):
