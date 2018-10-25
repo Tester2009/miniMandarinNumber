@@ -18,6 +18,7 @@ def number_to_pinyin():
         # check for length of input
         CHANGE_INT_TO_STR_RQ_INPUT = str(REQUEST_INPUT)
         LENGTH_OF_INPUT = len(CHANGE_INT_TO_STR_RQ_INPUT)
+        # print(str(LENGTH_OF_INPUT))
         if LENGTH_OF_INPUT==1:
             # basically from 0 to 9
             print('0 - 9')
@@ -29,18 +30,31 @@ def number_to_pinyin():
             # have to check first integer and 2nd integer
             SPLICE_INTEGER_ = list(str(REQUEST_INPUT))
             if int(SPLICE_INTEGER_[1])==0:
-                # if the 2nd integer is zero, don't need to add "Líng".
+                # if the 2nd integer is zero, don't need to add "Líng"
                 print( ten_number(SPLICE_INTEGER_[0]) )
             else:
                 print( ten_number(SPLICE_INTEGER_[0]) + " " + pinyin_first(SPLICE_INTEGER_[1]) )
         if LENGTH_OF_INPUT==3:
             # basically from 100 to 999
             print('100 to 999')
-            # hundred_number(REQUEST_INPUT)
             SPLICE_INTEGER_ = list(str(REQUEST_INPUT))
-            # if int(SPLICE_INTEGER_[1])==0:
-            print( pinyin_first(SPLICE_INTEGER_[0]) )
-            print(SPLICE_INTEGER_[0])
+            # print(SPLICE_INTEGER_)
+            # identify each number please
+            # if int(SPLICE_INTEGER_[1])==0 and int(SPLICE_INTEGER_[2])!=0:
+            #     # tell how to pronounce it properly
+            #     print( pinyin_first(SPLICE_INTEGER_[0]) + " Bǎi Ling " + pinyin_first(SPLICE_INTEGER_[2]) ) # add "Bǎi Ling"
+            #
+            # #
+            # if int(SPLICE_INTEGER_[1])!=0 and int(SPLICE_INTEGER_[2])!=0:
+            #     print( pinyin_first(SPLICE_INTEGER_[0]) + " Bǎi " + ten_number(SPLICE_INTEGER_[1]) + " " + pinyin_first(SPLICE_INTEGER_[2]) ) # add "Bǎi Ling"
+            #
+            #
+            # if int(SPLICE_INTEGER_[1])==0 and int(SPLICE_INTEGER_[2])==0:
+            #     # now only pronounce without "Líng"
+            #     print( pinyin_first(SPLICE_INTEGER_[0]) + " Bǎi ") # add "Bǎi Ling"
+
+
+
     except Exception as e_message:
         GET_ERROR_INFO = throwError('errName')
         # print(GET_ERROR_INFO)
